@@ -10,11 +10,15 @@ import android.content.IntentFilter
 import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.IBinder
+import android.widget.LinearLayout
+import android.widget.RemoteViews
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import java.lang.Exception
 
-
+/**
+ * 通知服务
+ */
 class LightService :Service(){
     private lateinit var mNm: NotificationManager
     private lateinit var mBroadcastReceiver: BroadcastReceiver
@@ -26,15 +30,15 @@ class LightService :Service(){
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
       //  println("@@运行备忘录通知")
-        val piPre = PendingIntent.getActivity(this@LightService,1,Intent(this@LightService,MainActivity::class.java).apply {
+        val piPre = PendingIntent.getActivity(this@LightService,1,Intent(this@LightService,addTips::class.java).apply {
             putExtra("intoBy","notify")
         },
             FLAG_UPDATE_CURRENT)
         val notifyBuildPre = NotificationCompat.Builder(this@LightService, "notifyTodo")
             //设置通知标题
-            .setContentTitle("Todo or Not Todo")
+            .setContentTitle("点击新建Todo")
             //设置通知内容
-            .setContentText("正常运行中:Keep Focused")
+            .setContentText("正常运行中:Todo or Not Todo")
             .setAutoCancel(false)
             .setContentIntent(piPre)
             .setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
@@ -79,20 +83,18 @@ class LightService :Service(){
 
             override fun onReceive(context: Context?, intent: Intent?) {
 
+
                 val action = intent!!.action
                 if (action == Intent.ACTION_SCREEN_ON) {
-                  //  println("@@亮屏")
+                  //println("@@亮屏")
 
                     val pi = PendingIntent.getActivity(this@LightService,1,Intent(this@LightService,MainActivity::class.java).apply {
                         putExtra("intoBy","notify")
                     },
-                        FLAG_NO_CREATE)
+                        FLAG_UPDATE_CURRENT)
                     val todoList = shareGet(this@LightService,"todo")
                     val list = shareGet(this@LightService,"list")
                     if(list.isNullOrEmpty() || todoList.isNullOrEmpty()){
-                      //  println("初始化数据")
-                      //  println(list.toString())
-                      //  println(todoList.toString())
                     }else{
                         try {
                          //   println("开始遍历")
@@ -105,12 +107,13 @@ class LightService :Service(){
                                         //设置通知标题
                                         .setContentTitle("${todoList["${i.key.toInt() - 1 }"]?:"默认todo"}")
                                         //设置通知内容
-                                       // .setContentText("请继续保持哦！")
+                                     //  .setContentText("")
                                         .setAutoCancel(true)
                                         .setGroup("todos")
                                         .setGroupSummary(false)
                                         .setContentIntent(pi)
-                                        .setLargeIcon(BitmapFactory.decodeResource(context?.resources,R.drawable.notify))
+
+                                        .setLargeIcon(BitmapFactory.decodeResource(context?.resources,R.drawable.launch))
                                         .setSmallIcon(R.drawable.launch)
                                         .setShowWhen(true).build().apply {
                                             visibility = Notification.VISIBILITY_PUBLIC
@@ -123,7 +126,7 @@ class LightService :Service(){
                             }
 
                         }catch (e:Exception){
-                           // println("@@遍历出现问题：$e")
+
                            // println("@@遍历出现问题 $todoList} max:$list")
                         }
                     }

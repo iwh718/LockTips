@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+
+        android:layout_width="match_parent"
+        app:cardElevation="8dp"
+        android:orientation="vertical"
+    android:background="#ffffff"
+        android:layout_height="wrap_content"
+        tools:context=".addTips">
+
+
+        <LinearLayout
+                android:background="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:textColorHint="@color/colorPrimary"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:hint="备忘录"
+                        android:textColor="#000"
+                        android:id="@+id/todoText"
+                        android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RadioGroup
+                    android:id="@+id/todos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal">
+                <RadioButton
+                        android:textColor="#000"
+                        android:checked="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Todo1"
+                        android:id="@+id/newTodo1"
+                />
+                <RadioButton
+                        android:textColor="#000"
+                        android:text="Todo2"
+                        android:id="@+id/newTodo2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                <RadioButton
+                        android:textColor="#000"
+                        android:text="Todo3"
+                        android:id="@+id/newTodo3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </RadioGroup>
+
+            <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="确定"
+                    android:id="@+id/saveBtn"
+                    app:iconSize="30dp"
+                    android:padding="10dp"
+                    android:textColor="#fff"
+                    android:shadowRadius="5"
+                    app:cornerRadius="20dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+
+</com.google.android.material.card.MaterialCardView>

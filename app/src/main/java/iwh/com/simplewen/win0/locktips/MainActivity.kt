@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ShortcutInfo
 import android.content.pm.ShortcutManager
+import android.graphics.Color
 import android.graphics.drawable.Icon
 import android.net.Uri
 import android.os.Build
@@ -146,7 +147,9 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity,"服务正运行中！",Toast.LENGTH_SHORT).show()
             bottomBar.fabAlignmentMode = FAB_ALIGNMENT_MODE_END
             fab.setImageResource(R.drawable.ic_action_close)
+
             fabMode = 1
+
 
         }
         fab.setOnClickListener {
@@ -182,7 +185,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
@@ -210,7 +212,7 @@ class MainActivity : AppCompatActivity() {
                 AlertDialog.Builder(this@MainActivity)
                     .setTitle("关于锁屏备忘录")
                     .setIcon(R.drawable.launch)
-                    .setMessage("简介：这是一个在锁屏显示通知的备忘录，最多允许三条同时显示。\n\n by：IWH | version：v1.0.1 ")
+                    .setMessage("简介：这是一个在锁屏显示通知的备忘录，最多允许三条同时显示。\n\n by：IWH | version：v1.0.2 ")
                     .setNegativeButton("去反馈bug"){
                         _,_ ->
                         Intent().apply{

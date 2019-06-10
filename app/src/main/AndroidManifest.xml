@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="iwh.com.simplewen.win0.locktips">
+
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
+
     <application
             android:name=".App"
             android:allowBackup="true"
@@ -11,9 +14,14 @@
             android:roundIcon="@drawable/launch"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <service android:name=".LightService"
+        <activity android:name=".addTips"
+        android:theme="@style/addTips"
+                  android:launchMode="singleInstance"
+        >
+        </activity>
 
-        />
+        <service android:name=".LightService"/>
+
         <activity
                 android:name=".MainActivity"
                 android:excludeFromRecents="true"
@@ -22,6 +30,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.VIEW"/>
+
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>

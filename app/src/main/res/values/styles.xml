@@ -4,11 +4,28 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
+
+        <item name="actionMenuTextColor">#000</item>
+        <item name="android:actionOverflowButtonStyle">@style/actionBar</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="actionBar">
+       <item name="android:src">@drawable/ic_action_menu</item>
+    </style>
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="addTips" parent="Base.Theme.MaterialComponents.Dialog.Alert">
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:background">#E6FFFFFF</item>
+
+        <item name="android:textColor">#000</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
         <item name="windowNoTitle">true</item>
     </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>

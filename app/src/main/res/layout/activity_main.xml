@@ -10,13 +10,16 @@
     <com.google.android.material.appbar.AppBarLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:elevation="0dp"
             android:theme="@style/AppTheme.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
+                android:elevation="0dp"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
+                android:background="#fff"
+                app:titleTextColor="#000"
                 android:layout_gravity="center_vertical"
                 app:title="@string/app_name"
                 app:popupTheme="@style/AppTheme.PopupOverlay">
@@ -30,6 +33,7 @@
     <include layout="@layout/content_main"/>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
+
             android:backgroundTint="@color/colorPrimaryDark"
             app:layout_anchor="@id/bottomBar"
             android:layout_width="wrap_content"
